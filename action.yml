@@ -30,4 +30,4 @@ runs:
         done
         echo "::set-output name=value::[${json_str}]"
       env:
-        BRANCH_NAMES: "master rel-1.129 rel-1.128"
+        BRANCH_NAMES: "master rel-1.130 rel-1.129"

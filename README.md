@@ -18,5 +18,5 @@ Build branch names in a JSON list
 ## Example usage
 
 ```yaml
-uses: onshape/actions-build-branch-info@v1
+uses: onshape/actions-build-branch-info@main
 ```
