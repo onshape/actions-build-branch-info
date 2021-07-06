@@ -22,21 +22,22 @@ runs:
         set -x
         echo "INFO inputs.exclude-master: ${{ inputs.exclude-master }}"
         echo "INFO inputs.latest-rel-str: ${{ inputs.latest-rel-str }}"
-        if [[ "${{ inputs.latest-rel-str }}" == "true" ]]; then
-            return_str=$(echo ${{ env.BRANCH_NAMES }} | tr ' ' '\n' | grep '^rel-' | sort -V | tail -1)
-        else
-            json_str=""
-            for item in ${{ env.BRANCH_NAMES }}; do
-                if [[ "${{ inputs.exclude-master }}" == "true" && "$item" == "master" ]]; then
-                    :
-                elif [[ "$json_str" == "" ]]; then
-                    json_str="\"$item\""
-                else
-                    json_str="$json_str, \"$item\""
-                fi
-            done
-            return_str="[$json_str]"
-        endif
+        return_str="dummyVal"
+#        if [[ "${{ inputs.latest-rel-str }}" == "true" ]]; then
+#            return_str=$(echo ${{ env.BRANCH_NAMES }} | tr ' ' '\n' | grep '^rel-' | sort -V | tail -1)
+#        else
+#            json_str=""
+#            for item in ${{ env.BRANCH_NAMES }}; do
+#                if [[ "${{ inputs.exclude-master }}" == "true" && "$item" == "master" ]]; then
+#                    :
+#                elif [[ "$json_str" == "" ]]; then
+#                    json_str="\"$item\""
+#                else
+#                    json_str="$json_str, \"$item\""
+#                fi
+#            done
+#            return_str="[$json_str]"
+#        endif
         echo "::set-output name=value::$return_str"
       env:
         BRANCH_NAMES: "master rel-1.133 rel-1.132"
