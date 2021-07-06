@@ -4,6 +4,9 @@ inputs:
   exclude-master:
     description: 'Set true to exclude returning the master branch ex: for jobs like ios-democ-test'
     default: false
+  latest-rel-str:
+    description: 'Set true to return the latest release branch ex: for jobs like l10n-download'
+    default: false
 outputs:
   branches-json:
     description: "branch names in a JSON list"
