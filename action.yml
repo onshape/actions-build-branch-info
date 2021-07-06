@@ -17,6 +17,9 @@ runs:
       shell: bash
       run: |
         set -x
+        for v in "inputs.exclude-master" ; do
+           echo "input: $v ${{ $v }}"
+        done
         echo "DEBUG exclude-master ..:${{ inputs.exclude-master }}:.."
         json_str=""
         for item in ${{ env.BRANCH_NAMES }}; do
