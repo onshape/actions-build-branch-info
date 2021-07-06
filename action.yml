@@ -17,10 +17,8 @@ runs:
       shell: bash
       run: |
         set -x
-        for v in "inputs.exclude-master" ; do
-           echo "input: $v ${{ $v }}"
-        done
-        echo "DEBUG exclude-master ..:${{ inputs.exclude-master }}:.."
+        echo "INFO inputs.exclude-master:${{ inputs.exclude-master }}"
+        echo "INFO inputs.latest-rel-str:${{ inputs.latest-rel-str }}"
         json_str=""
         for item in ${{ env.BRANCH_NAMES }}; do
             if [[ "${{ inputs.exclude-master }}" == "true" && "$item" == "master" ]]; then
