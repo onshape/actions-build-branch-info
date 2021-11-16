@@ -7,6 +7,9 @@ inputs:
   latest-rel:
     description: 'Set true to return the latest release branch ex: for jobs like l10n-download'
     default: false
+  default-branch:
+    description: 'Default branch name of the caller repo'
+    default: master
 outputs:
   branches-json:
     description: "branch names in a JSON list or a single string for latest-rel"
@@ -20,8 +23,10 @@ runs:
       shell: bash
       run: |
         set -x
+        default_branch="${{ inputs.default-branch }}"
         echo "INFO inputs.exclude-master: ${{ inputs.exclude-master }}"
         echo "INFO inputs.latest-rel: ${{ inputs.latest-rel }}"
+        echo "INFO inputs.default-branch: ${default_branch}"
 
         if [[ "${{ inputs.latest-rel }}" == "true" ]]; then
             return_str=\"$(echo ${{ env.BRANCH_NAMES }} | tr ' ' '\n' | grep '^rel-' | sort -V | tail -1)\"
@@ -36,6 +41,7 @@ runs:
                     json_str="$json_str, \"$item\""
                 fi
             done
+            [[ "$default_branch" != "master" ]] && json_str="${json_str/master/$default_branch}"
             return_str="[$json_str]"
         fi
         echo "::set-output name=value::$return_str"
