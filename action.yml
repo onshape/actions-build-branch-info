@@ -46,4 +46,4 @@ runs:
         fi
         echo "::set-output name=value::$return_str"
       env:
-        BRANCH_NAMES: "master rel-1.148 rel-1.147"
+        BRANCH_NAMES: "master rel-1.149 rel-1.148"
