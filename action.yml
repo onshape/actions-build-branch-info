@@ -44,6 +44,6 @@ runs:
             [[ "$default_branch" != "master" ]] && json_str="${json_str/master/$default_branch}"
             return_str="[$json_str]"
         fi
-        echo "::set-output name=value::$return_str"
+        echo "value=$return_str" >> $GITHUB_OUTPUT
       env:
         BRANCH_NAMES: "master rel-1.155 rel-1.154"
