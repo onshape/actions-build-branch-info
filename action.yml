@@ -46,4 +46,4 @@ runs:
         fi
         echo "value=$return_str" >> $GITHUB_OUTPUT
       env:
-        BRANCH_NAMES: "master rel-1.206 rel-1.205"
+        BRANCH_NAMES: "master rel-1.207 rel-1.206"
